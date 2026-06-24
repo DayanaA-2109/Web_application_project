@@ -1,11 +1,13 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.shortcuts import render, redirect
 from .models import Parcel
-from django.views.decorators.csrf import csrf_exempt
-import json
 
+
+# ==========================
+# DISPLAY ALL PARCELS
+# ==========================
 
 def parcel_list(request):
+
     parcels = Parcel.objects.all()
 
     return render(
@@ -15,97 +17,98 @@ def parcel_list(request):
     )
 
 
-def DisplayParcels(request):
+# ==========================
+# ADD PARCEL
+# ==========================
 
-    parcels = list(
-        Parcel.objects.values()
-    )
-
-    return JsonResponse(
-        parcels,
-        safe=False
-    )
-
-
-@csrf_exempt
-def insertParcel(request):
+def addParcel(request):
 
     if request.method == "POST":
 
-        data = json.loads(request.body)
-
         Parcel.objects.create(
-            tracking_id=data['tracking_id'],
-            parcel_type=data['parcel_type'],
-            sender_name=data['sender_name'],
-            sender_phone=data['sender_phone'],
-            receiver_name=data['receiver_name'],
-            receiver_phone=data['receiver_phone'],
-            product_name=data.get('product_name'),
-            weight=data['weight'],
-            booking_date=data['booking_date'],
-            current_status=data['current_status']
+            tracking_id=request.POST['tracking_id'],
+            parcel_type=request.POST['parcel_type'],
+
+            sender_name=request.POST['sender_name'],
+            sender_phone=request.POST['sender_phone'],
+
+            receiver_name=request.POST['receiver_name'],
+            receiver_phone=request.POST['receiver_phone'],
+
+            product_name=request.POST.get('product_name'),
+
+            weight=request.POST['weight'],
+
+            booking_date=request.POST['booking_date'],
+
+            current_status=request.POST['current_status']
         )
 
-        return JsonResponse({
-            "message": "Parcel Added Successfully"
-        })
+        return redirect('/parcel/parcel-list/')
+
+    return render(
+        request,
+        'parcel/addParcel.html'
+    )
 
 
-@csrf_exempt
-def updateParcel(request, tracking_id):
+# ==========================
+# EDIT PARCEL PAGE
+# ==========================
 
-    if request.method == "PUT":
+def editParcel(request, parcel_id):
 
-        data = json.loads(request.body)
+    parcel = Parcel.objects.get(
+        parcel_id=parcel_id
+    )
 
-        try:
-
-            parcel = Parcel.objects.get(
-                tracking_id=tracking_id
-            )
-
-            parcel.parcel_type = data['parcel_type']
-            parcel.sender_name = data['sender_name']
-            parcel.sender_phone = data['sender_phone']
-            parcel.receiver_name = data['receiver_name']
-            parcel.receiver_phone = data['receiver_phone']
-            parcel.product_name = data.get('product_name')
-            parcel.weight = data['weight']
-            parcel.current_status = data['current_status']
-
-            parcel.save()
-
-            return JsonResponse({
-                "message": "Updated Successfully"
-            })
-
-        except Parcel.DoesNotExist:
-
-            return JsonResponse({
-                "error": "Parcel Not Found"
-            })
+    return render(
+        request,
+        'parcel/editParcel.html',
+        {'parcel': parcel}
+    )
 
 
-@csrf_exempt
-def deleteParcel(request, tracking_id):
+# ==========================
+# UPDATE PARCEL
+# ==========================
+def updateParcel(request, parcel_id):
 
-    if request.method == "DELETE":
+    if request.method == "POST":
 
-        try:
+        parcel = Parcel.objects.get(parcel_id=parcel_id)
 
-            parcel = Parcel.objects.get(
-                tracking_id=tracking_id
-            )
+        parcel.tracking_id = request.POST['tracking_id']
+        parcel.parcel_type = request.POST['parcel_type']
 
-            parcel.delete()
+        parcel.sender_name = request.POST['sender_name']
+        parcel.sender_phone = request.POST['sender_phone']
 
-            return JsonResponse({
-                "message": "Deleted Successfully"
-            })
+        parcel.receiver_name = request.POST['receiver_name']
+        parcel.receiver_phone = request.POST['receiver_phone']
 
-        except Parcel.DoesNotExist:
+        parcel.product_name = request.POST['product_name']
+        parcel.weight = request.POST['weight']
 
-            return JsonResponse({
-                "error": "Parcel Not Found"
-            })
+        parcel.current_status = request.POST['current_status']
+
+        # DO NOT TOUCH booking_date
+
+        parcel.save()
+
+        return redirect('/parcel/parcel-list/')
+
+
+# ==========================
+# DELETE PARCEL
+# ==========================
+
+def deleteParcel(request, parcel_id):
+
+    parcel = Parcel.objects.get(
+        parcel_id=parcel_id
+    )
+
+    parcel.delete()
+
+    return redirect('/parcel/parcel-list/')
