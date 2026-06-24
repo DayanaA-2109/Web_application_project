@@ -1,97 +1,353 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <title>Parcel Management System</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
-
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel · Management</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Font (Inter) for a modern touch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: #f4f7fc;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            padding: 2rem 0;
+        }
+        .container {
+            max-width: 1400px;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.12);
+            padding: 2rem 2rem 2.5rem;
+            transition: box-shadow 0.2s;
+        }
+        /* header area */
+        .header-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.75rem;
+        }
+        .header-section h2 {
+            font-weight: 700;
+            font-size: 1.9rem;
+            letter-spacing: -0.02em;
+            color: #0b1e33;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header-section h2 i {
+            color: #2a6df4;
+            font-size: 2rem;
+        }
+        .btn-add {
+            background: #1d4ed8;
+            border: none;
+            padding: 0.6rem 1.6rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 60px;
+            box-shadow: 0 6px 14px rgba(29, 78, 216, 0.25);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-add:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -6px rgba(29, 78, 216, 0.4);
+        }
+        /* table card style */
+        .table-responsive {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #e9edf4;
+        }
+        .table {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            background: white;
+        }
+        .table thead th {
+            background: #f0f4fe;
+            color: #1f2a44;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 1rem 0.75rem;
+            border-bottom: 2px solid #dce3ef;
+            vertical-align: middle;
+        }
+        .table tbody td {
+            padding: 0.9rem 0.75rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #edf2f9;
+            background-color: white;
+        }
+        .table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+        .table tbody tr:hover td {
+            background-color: #fafcff;
+        }
+        /* status badges */
+        .badge-status {
+            font-weight: 500;
+            padding: 0.4rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            letter-spacing: 0.01em;
+            background: #eef2f6;
+            color: #2b3b5c;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .badge-status.booked {
+            background: #e6f0ff;
+            color: #1a5bc7;
+        }
+        .badge-status.picked-up {
+            background: #fff2db;
+            color: #b45a1c;
+        }
+        .badge-status.in-transit {
+            background: #e3f0ff;
+            color: #0b6bcb;
+        }
+        .badge-status.delivered {
+            background: #e2f7e6;
+            color: #0d7836;
+        }
+        .badge-status.out-for-delivery {
+            background: #fce9e9;
+            color: #b91c1c;
+        }
+        /* action buttons */
+        .action-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .btn-edit {
+            background: #eef4ff;
+            border: none;
+            color: #1d4ed8;
+            font-weight: 500;
+            padding: 0.25rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-edit:hover {
+            background: #dce7ff;
+            color: #1039a0;
+        }
+        .btn-delete {
+            background: #fee9e9;
+            border: none;
+            color: #b91c1c;
+            font-weight: 500;
+            padding: 0.25rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-delete:hover {
+            background: #fdd5d5;
+            color: #991b1b;
+        }
+        .empty-state {
+            padding: 3rem 0;
+            color: #6b7a93;
+            font-weight: 500;
+        }
+        /* small tweaks */
+        .text-muted-light {
+            color: #6c7b94;
+        }
+        .fw-semibold {
+            font-weight: 600;
+        }
+        .tracking-id {
+            font-family: 'Inter', monospace;
+            font-weight: 500;
+            color: #1f2a44;
+            letter-spacing: 0.01em;
+        }
+        .product-name {
+            max-width: 110px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+        .weight-cell {
+            font-weight: 500;
+            color: #1b2a41;
+        }
+        /* mobile friendly */
+        @media (max-width: 767px) {
+            .container {
+                padding: 1.5rem 1rem;
+                border-radius: 20px;
+            }
+            .header-section h2 {
+                font-size: 1.5rem;
+            }
+            .btn-add {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .table thead th {
+                font-size: 0.7rem;
+                padding: 0.7rem 0.5rem;
+            }
+            .table tbody td {
+                padding: 0.7rem 0.5rem;
+                font-size: 0.8rem;
+            }
+            .action-group {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .btn-edit, .btn-delete {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container mt-5">
+<div class="container">
+    <!-- header with Add button -->
+    <div class="header-section">
+        <h2>
+            <i class="bi bi-box-seam"></i> Parcel Details
+        </h2>
+        <a href="/parcel/addParcel/" class="btn btn-add btn-primary">
+            <i class="bi bi-plus-circle"></i> Add Parcel
+        </a>
+    </div>
 
-
-<h2 class="text-center mb-4">
-    Parcel Details
-</h2>
-
-<a href="/parcel/addParcel/"
-   class="btn btn-primary mb-3">
-    Add Parcel
-</a>
-
-<table class="table table-bordered table-striped">
-
-    <thead class="table-dark">
-        <tr>
-            <th>Parcel ID</th>
-            <th>Tracking ID</th>
-            <th>Type</th>
-            <th>Sender</th>
-            <th>Receiver</th>
-            <th>Product</th>
-            <th>Weight</th>
-            <th>Status</th>
-            <th width="180">Action</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-        {% for parcel in parcels %}
-        <tr>
-
-            <td>{{ parcel.parcel_id }}</td>
-
-            <td>{{ parcel.tracking_id }}</td>
-
-            <td>{{ parcel.parcel_type }}</td>
-
-            <td>{{ parcel.sender_name }}</td>
-
-            <td>{{ parcel.receiver_name }}</td>
-
-            <td>{{ parcel.product_name }}</td>
-
-            <td>{{ parcel.weight }}</td>
-
-            <td>{{ parcel.current_status }}</td>
-
-            <td>
-<a href="/parcel/editParcel/{{ parcel.parcel_id }}/"
-   class="btn btn-warning btn-sm">
-   Edit
-</a>
-
-              <a href="/parcel/deleteParcel/{{ parcel.parcel_id }}/"
-   class="btn btn-danger btn-sm"
-   onclick="return confirm('Are you sure?')">
-   Delete
-</a>
-
-            </td>
-
-        </tr>
-
-        {% empty %}
-
-        <tr>
-            <td colspan="9" class="text-center">
-                No Parcels Found
-            </td>
-        </tr>
-
-        {% endfor %}
-
-    </tbody>
-
-</table>
-```
-
+    <!-- table wrapper -->
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Parcel ID</th>
+                    <th>Tracking ID</th>
+                    <th>Type</th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+                    <th>Product</th>
+                    <th>Weight</th>
+                    <th>Status</th>
+                    <th width="180">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--
+                    Django template syntax preserved exactly as provided.
+                    The static data below is purely for preview / styling demonstration.
+                    In production, the for loop will render real parcels.
+                -->
+                {% for parcel in parcels %}
+                <tr>
+                    <td><span class="fw-semibold">{{ parcel.parcel_id }}</span></td>
+                    <td><span class="tracking-id">{{ parcel.tracking_id }}</span></td>
+                    <td>
+                        {% if parcel.parcel_type == "Ecommerce" %}
+                            <span class="badge bg-light text-dark border px-3 py-1 rounded-pill" style="font-weight:500; background:#eef2f6!important;">
+                                <i class="bi bi-cart3 me-1"></i> Ecom
+                            </span>
+                        {% else %}
+                            <span class="badge bg-light text-dark border px-3 py-1 rounded-pill" style="font-weight:500; background:#eef2f6!important;">
+                                <i class="bi bi-truck me-1"></i> Courier
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td>{{ parcel.sender_name }}</td>
+                    <td>{{ parcel.receiver_name }}</td>
+                    <td>
+                        {% if parcel.product_name and parcel.product_name != "None" %}
+                            <span class="product-name">{{ parcel.product_name }}</span>
+                        {% else %}
+                            <span class="text-muted-light" style="font-size:0.8rem;">—</span>
+                        {% endif %}
+                    </td>
+                    <td class="weight-cell">{{ parcel.weight }} kg</td>
+                    <td>
+                        {% with status=parcel.current_status|lower|cut:" " %}
+                        <span class="badge-status
+                            {% if 'booked' in parcel.current_status|lower %}booked
+                            {% elif 'picked' in parcel.current_status|lower %}picked-up
+                            {% elif 'transit' in parcel.current_status|lower %}in-transit
+                            {% elif 'delivered' in parcel.current_status|lower %}delivered
+                            {% elif 'out' in parcel.current_status|lower or 'for delivery' in parcel.current_status|lower %}out-for-delivery
+                            {% endif %}
+                        ">
+                            <i class="bi
+                                {% if 'booked' in parcel.current_status|lower %}bi-clock-history
+                                {% elif 'picked' in parcel.current_status|lower %}bi-box-arrow-up
+                                {% elif 'transit' in parcel.current_status|lower %}bi-truck
+                                {% elif 'delivered' in parcel.current_status|lower %}bi-check2-circle
+                                {% elif 'out' in parcel.current_status|lower or 'for delivery' in parcel.current_status|lower %}bi-send
+                                {% else %}bi-circle
+                                {% endif %} me-1">
+                            </i>
+                            {{ parcel.current_status }}
+                        </span>
+                        {% endwith %}
+                    </td>
+                    <td>
+                        <div class="action-group">
+                            <a href="/parcel/editParcel/{{ parcel.parcel_id }}/" class="btn-edit">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a href="/parcel/deleteParcel/{{ parcel.parcel_id }}/" class="btn-delete" onclick="return confirm('Are you sure?')">
+                                <i class="bi bi-trash3"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="9" class="text-center empty-state">
+                        <i class="bi bi-inbox" style="font-size:1.5rem; display:block; margin-bottom:6px;"></i>
+                        No Parcels Found
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- optional footer note (keeps the design clean) -->
+    <div class="mt-3 text-end text-muted-light" style="font-size:0.75rem; letter-spacing:0.02rem;">
+        <i class="bi bi-database"></i>  {{ parcels|length }} parcels · updated in real-time
+    </div>
 </div>
 
+<!-- Bootstrap JS (optional for any toggles, not strictly needed) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
