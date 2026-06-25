@@ -4,7 +4,7 @@ from .models import User, Shipment, Tracking
 
 
 class UserSerializer:
-    """Convert User model to JSON"""
+    """Convert User to JSON"""
 
     @staticmethod
     def serialize(user):
@@ -27,7 +27,7 @@ class UserSerializer:
 
 
 class ShipmentSerializer:
-    """Convert Shipment model to JSON"""
+    """Convert Shipment to JSON"""
 
     @staticmethod
     def serialize(shipment):
@@ -46,8 +46,7 @@ class ShipmentSerializer:
             'cod_amount': str(shipment.cod_amount),
             'status': shipment.status,
             'status_display': dict(Shipment.STATUS_CHOICES).get(shipment.status, shipment.status),
-            'assigned_agent': shipment.assigned_agent.id if shipment.assigned_agent else None,
-            'agent_name': shipment.assigned_agent.name if shipment.assigned_agent else None,
+            'assigned_agent_id': shipment.assigned_agent_id,
             'expected_delivery': shipment.expected_delivery,
             'delivered_at': shipment.delivered_at,
             'created_at': shipment.created_at
@@ -59,7 +58,7 @@ class ShipmentSerializer:
 
 
 class TrackingSerializer:
-    """Convert Tracking model to JSON"""
+    """Convert Tracking to JSON"""
 
     @staticmethod
     def serialize(tracking):

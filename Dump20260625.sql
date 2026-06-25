@@ -358,7 +358,7 @@ CREATE TABLE `shipments` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `awb_number` (`awb_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -388,7 +388,7 @@ CREATE TABLE `tracking` (
   PRIMARY KEY (`id`),
   KEY `shipment_id` (`shipment_id`),
   CONSTRAINT `tracking_ibfk_1` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,8 +397,42 @@ CREATE TABLE `tracking` (
 
 LOCK TABLES `tracking` WRITE;
 /*!40000 ALTER TABLE `tracking` DISABLE KEYS */;
-INSERT INTO `tracking` VALUES (1,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 07:43:10'),(2,1,'Picked Up','Warehouse','Picked by agent','2026-06-25 07:43:10'),(3,1,'Delivered','Mumbai','Delivered to Priya','2026-06-25 07:43:10');
+INSERT INTO `tracking` VALUES (1,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 07:43:10'),(2,1,'Picked Up','Warehouse','Picked by agent','2026-06-25 07:43:10'),(3,1,'Delivered','Mumbai','Delivered to Priya','2026-06-25 07:43:10'),(4,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 14:33:05'),(5,1,'Picked Up','Warehouse','Package picked up by agent','2026-06-25 15:33:05'),(6,1,'In Transit','Mumbai Hub','Package sorted at hub','2026-06-25 16:33:05'),(7,1,'Out for Delivery','Mumbai','Out for delivery to customer','2026-06-25 17:33:05'),(8,1,'Delivered','Mumbai','Delivered to recipient','2026-06-25 18:33:05');
 /*!40000 ALTER TABLE `tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_ecommerce`
+--
+
+DROP TABLE IF EXISTS `users_ecommerce`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users_ecommerce` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `role` enum('customer','merchant','admin','agent') DEFAULT 'customer',
+  `company_name` varchar(150) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `pincode` varchar(10) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_ecommerce`
+--
+
+LOCK TABLES `users_ecommerce` WRITE;
+/*!40000 ALTER TABLE `users_ecommerce` DISABLE KEYS */;
+INSERT INTO `users_ecommerce` VALUES (1,'Nykaa Logistics','logistics@nykaa.com','hashed','9876543210','merchant','Nykaa E-Retail','Mumbai','400001',1,'2026-06-25 14:43:16'),(2,'Amazon India','logistics@amazon.com','hashed','9876543211','merchant','Amazon India','Delhi','110001',1,'2026-06-25 14:43:19'),(3,'Flipkart','logistics@flipkart.com','hashed','9876543212','merchant','Flipkart','Bangalore','560001',1,'2026-06-25 14:43:19');
+/*!40000 ALTER TABLE `users_ecommerce` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -410,4 +444,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-25 13:50:51
+-- Dump completed on 2026-06-25 22:21:54

@@ -1,0 +1,179 @@
+<!-- e_commerce/templates/addshipment.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Shipment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f6f9;
+            color: #1a2639;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e9eff5;
+        }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 28px; color: #0b2b4a; }
+        .header h1 span { color: #ffb347; }
+        .header p { color: #6b7b8e; font-size: 14px; margin-top: 5px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-weight: 600; font-size: 13px; color: #1a2639; margin-bottom: 5px; }
+        .form-group label .required { color: #e74c3c; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1.5px solid #d0d9e3;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            background: #fafbfc;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #0b2b4a;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(11,43,74,0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 60px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-primary { background: #0b2b4a; color: white; }
+        .btn-primary:hover { background: #1a3f5e; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(11,43,74,0.25); }
+        .btn-secondary { background: #e9eff5; color: #1a2639; }
+        .btn-secondary:hover { background: #d0d9e3; }
+        .result-box {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            display: none;
+        }
+        .result-box.success { display: block; background: #eafaf1; border: 1px solid #27ae60; color: #1e8449; }
+        .result-box.error { display: block; background: #fdedec; border: 1px solid #e74c3c; color: #922b21; }
+        .result-box .awb-display {
+            font-weight: 700;
+            font-size: 18px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 8px 0;
+            border: 1px dashed #0b2b4a;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: #0b2b4a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        @media (max-width: 480px) {
+            .container { padding: 24px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>📦 Ship<span>Xpress</span></h1>
+        <p>Create a new shipment</p>
+    </div>
+
+    <!-- ✅ Form with CSRF Token -->
+    <form method="POST" action="/api/shipments/create/">
+        {% csrf_token %}
+
+        <input type="hidden" name="merchant_id" value="1" />
+
+        <div class="form-group">
+            <label>Receiver Name <span class="required">*</span></label>
+            <input type="text" name="receiver_name" placeholder="Enter receiver's full name" required />
+        </div>
+
+        <div class="form-group">
+            <label>Receiver Phone <span class="required">*</span></label>
+            <input type="tel" name="receiver_phone" placeholder="Enter phone number" required />
+        </div>
+
+        <div class="form-group">
+            <label>Receiver Address <span class="required">*</span></label>
+            <textarea name="receiver_address" placeholder="Enter complete address" required></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>City <span class="required">*</span></label>
+                <input type="text" name="receiver_city" placeholder="City" required />
+            </div>
+            <div class="form-group">
+                <label>Pincode <span class="required">*</span></label>
+                <input type="text" name="receiver_pincode" placeholder="Pincode" required />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Weight (kg) <span class="required">*</span></label>
+                <input type="number" name="weight" placeholder="0.5" step="0.1" required />
+            </div>
+            <div class="form-group">
+                <label>COD Amount (₹)</label>
+                <input type="number" name="cod_amount" placeholder="0" step="1" value="0" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Expected Delivery Date</label>
+            <input type="date" name="expected_delivery" />
+        </div>
+
+        <div class="form-group">
+            <label>Order ID (Optional)</label>
+            <input type="text" name="order_id" placeholder="Enter order ID from your store" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Create Shipment
+        </button>
+    </form>
+
+    <a href="/api/dashboard-page/" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+</div>
+
+</body>
+</html>
