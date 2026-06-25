@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('current_status', models.CharField(max_length=50)),
             ],
             options={
-                'db_table': 'parcel',
+                'db_table': 'e-commerce',
             },
         ),
     ]

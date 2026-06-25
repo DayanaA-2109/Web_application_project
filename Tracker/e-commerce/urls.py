@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
 
     path(
-        'parcel-list/',
+        'e-commerce-list/',
         views.parcel_list,
         name='parcel_list'
     ),

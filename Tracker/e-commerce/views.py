@@ -12,7 +12,7 @@ def parcel_list(request):
 
     return render(
         request,
-        'parcel/parcel_list.html',
+        'e-commerce/parcel_list.html',
         {'parcels': parcels}
     )
 
@@ -44,11 +44,11 @@ def addParcel(request):
             current_status=request.POST['current_status']
         )
 
-        return redirect('/parcel/parcel-list/')
+        return redirect('/e-commerce/e-commerce-list/')
 
     return render(
         request,
-        'parcel/addParcel.html'
+        'e-commerce/addParcel.html'
     )
 
 
@@ -64,8 +64,8 @@ def editParcel(request, parcel_id):
 
     return render(
         request,
-        'parcel/editParcel.html',
-        {'parcel': parcel}
+        'e-commerce/editParcel.html',
+        {'e-commerce': parcel}
     )
 
 
@@ -96,7 +96,7 @@ def updateParcel(request, parcel_id):
 
         parcel.save()
 
-        return redirect('/parcel/parcel-list/')
+        return redirect('/e-commerce/e-commerce-list/')
 
 
 # ==========================
@@ -111,4 +111,4 @@ def deleteParcel(request, parcel_id):
 
     parcel.delete()
 
-    return redirect('/parcel/parcel-list/')
+    return redirect('/e-commerce/e-commerce-list/')

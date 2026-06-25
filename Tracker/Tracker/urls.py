@@ -20,5 +20,5 @@ from django.urls import path
 from django.urls import path, include
 
 urlpatterns = [
-    path('parcel/', include('parcel.urls')),
+    path('e-commerce/', include('e-commerce.urls')),
 ]

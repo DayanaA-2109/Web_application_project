@@ -29,5 +29,5 @@ class Parcel(models.Model):
     current_status = models.CharField(max_length=50)
 
     class Meta:
-        db_table = 'parcel'
+        db_table = 'e-commerce'
         managed = False
