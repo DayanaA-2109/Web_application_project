@@ -76,9 +76,13 @@ WSGI_APPLICATION = 'Tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'login',
+        'NAME': 'tracker',
         'USER': 'root',
+<<<<<<< HEAD
         'PASSWORD': 'Rihana@0109',
+=======
+        'PASSWORD': 'Password.1',
+>>>>>>> 3ead47315f72f376940dd63318e66f513808e327
         'HOST': 'localhost',
         'PORT': '3306',
     }
