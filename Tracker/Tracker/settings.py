@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'e_commerce',
+<<<<<<< HEAD
     'delivery',
+=======
+
+>>>>>>> 2241d53179dc078d5f6e15e5593825ce740de3d9
 ]
 
 MIDDLEWARE = [
@@ -56,7 +60,7 @@ ROOT_URLCONF = 'Tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],  # IMPORTANT
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +80,11 @@ WSGI_APPLICATION = 'Tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< HEAD
         'NAME': 'web_application_project',
+=======
+        'NAME': 'tracker',
+>>>>>>> 2241d53179dc078d5f6e15e5593825ce740de3d9
         'USER': 'root',
         'PASSWORD': 'Thamizh@2507',
         'HOST': 'localhost',
