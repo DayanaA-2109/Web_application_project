@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # Your apps
     'e_commerce',
-    'leader',
+    'delivery',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'Tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'login',
+        'NAME': 'web_application_project',
         'USER': 'root',
-        'PASSWORD': 'Deepak@0926',
+        'PASSWORD': 'Thamizh@2507',
         'HOST': 'localhost',
         'PORT': '3306',
     }
