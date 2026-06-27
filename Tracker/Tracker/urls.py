@@ -1,9 +1,10 @@
-# Tracker/urls.py
-
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path,include
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('e_commerce.urls')),  # All APIs
+urlpatterns=[
+
+    path('admin/',admin.site.urls),
+
+    path('',include('delivery.urls')),
+
 ]

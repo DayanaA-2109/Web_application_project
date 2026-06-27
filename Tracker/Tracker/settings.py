@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'e_commerce',
+    'delivery',
 ]
 
 MIDDLEWARE = [
@@ -75,9 +76,9 @@ WSGI_APPLICATION = 'Tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Tracker',
+        'NAME': 'web_application_project',
         'USER': 'root',
-        'PASSWORD': 'Password.1',
+        'PASSWORD': 'Thamizh@2507',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -119,3 +120,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
