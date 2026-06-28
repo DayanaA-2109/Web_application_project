@@ -1,0 +1,622 @@
+/* ================= NAVBAR ================= */
+
+.navbar-container{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:40px;
+}
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+}
+
+.logo-icon{
+
+    font-size:42px;
+    color:#183b66;
+
+}
+
+.logo h2{
+
+    margin:0;
+
+    font-size:56px;
+
+    font-weight:800;
+
+    color:#183b66;
+
+    letter-spacing:-1px;
+
+}
+
+.logo span{
+
+    color:#f4a534;
+
+}
+
+.merchant-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    border:none;
+
+    background:#183b66;
+
+    color:white;
+
+    padding:15px 28px;
+
+    border-radius:40px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.merchant-btn:hover{
+
+    background:#2d5d96;
+
+}
+/* ---------- Stats Cards ---------- */
+
+.stats-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.stats-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+
+}
+
+.stats-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+}
+
+.stats-title{
+
+    color:#7B8794;
+
+    font-size:15px;
+
+    margin-bottom:12px;
+
+}
+
+.stats-number{
+
+    color:#16385E;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:5px;
+
+}
+
+.stats-subtitle{
+
+    color:#A0A7AF;
+
+}
+
+.stats-icon{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    color:#16385E;
+
+}
+/* ===========================
+   QUICK ACTIONS
+=========================== */
+
+.quick-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:28px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+
+    height:100%;
+
+}
+
+.section-heading{
+
+    font-size:30px;
+
+    font-weight:600;
+
+    color:#16385E;
+
+    margin-bottom:25px;
+
+}
+
+.heading-icon{
+
+    margin-right:10px;
+
+    color:#F5A623;
+
+}
+
+.action-btn{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+    font-weight:500;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    transition:.3s;
+
+}
+
+.action-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* Create */
+
+.create-btn{
+
+    background:#16385E;
+
+    color:white;
+
+}
+
+.create-btn:hover{
+
+    background:#204E7A;
+
+}
+
+/* Track */
+
+.track-btn{
+
+    background:#EEF3FA;
+
+    color:#16385E;
+
+}
+
+.track-btn:hover{
+
+    background:#DDE8F5;
+
+}
+
+/* API */
+
+.api-btn{
+
+    background:#FFF7DE;
+
+    color:#C79000;
+
+}
+
+.api-btn:hover{
+
+    background:#FFEFB7;
+
+}
+
+/* ===========================
+   RECENT ACTIVITY
+=========================== */
+
+.activity-card{
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    height: 420px;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+.activity-scroll{
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    margin-top: 20px;
+
+    padding-right: 10px;
+
+}
+
+.activity-scroll::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.activity-scroll::-webkit-scrollbar-track{
+
+    background:#f3f4f6;
+
+    border-radius:10px;
+
+}
+
+.activity-scroll::-webkit-scrollbar-thumb{
+
+    background:#cbd5e1;
+
+    border-radius:10px;
+
+}
+
+.activity-scroll::-webkit-scrollbar-thumb:hover{
+
+    background:#94a3b8;
+
+}
+
+.activity-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    margin-bottom:25px;
+
+}
+
+.activity-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#16385E;
+
+    margin-top:8px;
+
+}
+
+.activity-item h6{
+
+    margin:0;
+
+    font-size:17px;
+
+    color:#16385E;
+
+}
+
+.activity-item small{
+
+    color:#8E98A5;
+
+}
+
+/* ===========================
+   SHIPMENTS TABLE
+=========================== */
+
+.shipment-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:28px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+
+}
+
+.shipment-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.refresh-btn{
+
+    border:none;
+
+    background:#EEF3FA;
+
+    color:#16385E;
+
+    border-radius:10px;
+
+    padding:10px 18px;
+
+    font-weight:500;
+
+}
+
+.shipment-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.shipment-table th{
+
+    color:#6C7A89;
+
+    padding:15px;
+
+    text-align:left;
+
+    border-bottom:2px solid #eee;
+
+}
+
+.shipment-table td{
+
+    padding:18px 15px;
+
+    border-bottom:1px solid #f2f2f2;
+
+}
+
+.shipment-table tr:hover{
+
+    background:#F9FBFD;
+
+}
+
+/* Status badges */
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.delivered{
+
+    background:#D5F5E3;
+
+    color:#1E8449;
+
+}
+
+.in_transit{
+
+    background:#D6EAF8;
+
+    color:#21618C;
+
+}
+
+.pending{
+
+    background:#FDEBD0;
+
+    color:#B9770E;
+
+}
+.picked_up{
+
+    background:#FFF4CC;
+
+    color:#B8860B;
+
+}
+
+.failed{
+
+    background:#FADBD8;
+
+    color:#C0392B;
+
+}
+
+/* ===================================
+   CREATE SHIPMENT MODAL
+=================================== */
+
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,.45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.shipment-modal{
+
+    width: 650px;
+    max-width: 90%;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+
+}
+
+.shipment-modal h3{
+
+    margin-bottom: 25px;
+
+    color: #16385E;
+
+}
+
+.shipment-modal input,
+.shipment-modal textarea{
+
+    width: 100%;
+
+    padding: 12px 15px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+.shipment-modal input:focus,
+.shipment-modal textarea:focus{
+
+    border-color:#16385E;
+
+}
+
+.shipment-modal textarea{
+
+    height:90px;
+
+    resize:none;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+.cancel-btn{
+
+    background:#ddd;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:12px 22px;
+
+    cursor:pointer;
+
+}
+
+.cancel-btn:hover{
+
+    background:#cfcfcf;
+
+}
