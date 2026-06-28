@@ -2,7 +2,7 @@ import { useState } from "react";
 import api from "../services/api";
 
 function CreateShipmentModal({ show, onClose, onSuccess }) {
-     console.log("Modal show =", show);
+    console.log("Modal show =", show);
     const [form, setForm] = useState({
 
         merchant_id: 1,
@@ -35,21 +35,23 @@ function CreateShipmentModal({ show, onClose, onSuccess }) {
 
         try {
 
-            await api.post("/shipments/create/", form);
+            const response = await api.post("/shipments/create/", form);
 
-            alert("Shipment Created Successfully!");
-
-            onSuccess();
-
-            onClose();
+            // FIXED: Check if success is true
+            if (response.data.success === true) {
+                alert(response.data.message || "Shipment Created Successfully!");
+                onSuccess();
+                onClose();
+            } else {
+                alert(response.data.message || "Failed to create shipment");
+            }
 
         }
 
         catch (err) {
 
             console.log(err);
-
-            alert("Failed to create shipment");
+            alert(err.response?.data?.message || "Failed to create shipment");
 
         }
 
@@ -164,4 +166,3 @@ function CreateShipmentModal({ show, onClose, onSuccess }) {
 }
 
 export default CreateShipmentModal;
-

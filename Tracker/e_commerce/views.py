@@ -246,6 +246,7 @@ def get_shipments(request):
         safe=False
 
     )
+
 @require_http_methods(["GET"])
 def get_shipment(request, awb):
 
@@ -262,6 +263,10 @@ def get_shipment(request, awb):
         "status": shipment.status
     })
 
+# ============================================
+# FIXED: CREATE SHIPMENT
+# ============================================
+
 @csrf_exempt
 @require_http_methods(["POST"])
 def create_shipment(request):
@@ -270,7 +275,7 @@ def create_shipment(request):
         data = json.loads(request.body)
     except:
         return JsonResponse(
-            {"error": "Invalid JSON"},
+            {"error": "Invalid JSON", "message": "Please provide valid JSON data"},
             status=400
         )
 
@@ -287,7 +292,7 @@ def create_shipment(request):
     for field in required:
         if not data.get(field):
             return JsonResponse(
-                {"error": f"{field} is required"},
+                {"error": f"{field} is required", "success": False},
                 status=400
             )
 
@@ -344,11 +349,70 @@ def create_shipment(request):
 
     return JsonResponse({
 
-        "success":True,
+        "success": True,
 
-        "message":"Shipment Created",
+        "message": "Shipment Created Successfully",
 
-        "shipment":ShipmentSerializer.serialize(shipment)
+        "shipment": ShipmentSerializer.serialize(shipment)
+
+    })
+
+# ============================================
+# FIXED: GENERATE API KEY
+# ============================================
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def generate_api_key(request):
+
+    try:
+        data = json.loads(request.body)
+    except:
+        return JsonResponse({
+            "error": "Invalid JSON",
+            "success": False,
+            "message": "Please provide valid JSON data"
+        }, status=400)
+
+    # Check if merchant_id is provided
+    if not data.get("merchant_id"):
+        return JsonResponse({
+            "error": "merchant_id is required",
+            "success": False,
+            "message": "Merchant ID is required"
+        }, status=400)
+
+    merchant = get_object_or_404(
+        User,
+        id=data["merchant_id"],
+        role="merchant"
+    )
+
+    key = secrets.token_hex(32)
+
+    api = ApiKey.objects.create(
+
+        merchant=merchant,
+
+        key_name=data.get("key_name", "Default Key"),
+
+        api_key=key,
+
+        permissions="read_write",
+
+        is_active=True,
+
+        created_at=timezone.now()
+
+    )
+
+    return JsonResponse({
+
+        "success": True,
+
+        "message": "API Key Generated Successfully",
+
+        "api_key": ApiKeySerializer.serialize(api)
 
     })
 
@@ -567,47 +631,6 @@ def recent_activity(request):
 
     )
 
-@csrf_exempt
-@require_http_methods(["POST"])
-def generate_api_key(request):
-
-    try:
-        data=json.loads(request.body)
-    except:
-        return JsonResponse({"error":"Invalid JSON"},status=400)
-
-    merchant = get_object_or_404(
-        User,
-        id=data["merchant_id"],
-        role="merchant"
-    )
-
-    key=secrets.token_hex(32)
-
-    api=ApiKey.objects.create(
-
-        merchant=merchant,
-
-        key_name=data["key_name"],
-
-        api_key=key,
-
-        permissions="read_write",
-
-        is_active=True,
-
-        created_at=timezone.now()
-
-    )
-
-    return JsonResponse({
-
-        "success":True,
-
-        "api_key":ApiKeySerializer.serialize(api)
-
-    })
-
 @require_http_methods(["GET"])
 def get_invoices(request):
 
@@ -641,4 +664,3 @@ def get_invoice(request,id):
         InvoiceSerializer.serialize(invoice)
 
     )
-

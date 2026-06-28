@@ -5,7 +5,7 @@ function Navbar({ merchant }) {
 
         <div className="navbar-container">
 
-        <div className="logo">
+            <div className="logo">
 
                 <FaCube className="logo-icon" />
 
@@ -19,7 +19,7 @@ function Navbar({ merchant }) {
 
                 <FaStore />
 
-                <span>{merchant.company_name || "Loading..."}</span>
+                <span>{merchant?.company_name || "Merchant"}</span>
 
             </button>
 

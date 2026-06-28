@@ -12,40 +12,58 @@ import "../css/dashboard.css";
 
 function Dashboard() {
 
-    const [merchant, setMerchant] = useState({});
+    const [merchant, setMerchant] = useState(null);
     const [stats, setStats] = useState({});
     const [activities, setActivities] = useState([]);
     const [shipments, setShipments] = useState([]);
 
     useEffect(() => {
 
-    api.get("/merchant/1/")
-        .then((res) => {
-            console.log("Merchant:", res.data);
-            setMerchant(res.data);
-        })
-        .catch((err) => console.log(err));
+        // Fetch merchant
+        api.get("/merchant/1/")
+            .then((res) => {
+                console.log("Merchant:", res.data);
+                setMerchant(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+                // Set default merchant if API fails
+                setMerchant({ company_name: "Merchant" });
+            });
 
-    api.get("/stats/?merchant_id=1")
-        .then((res) => {
-            console.log("Stats:", res.data);
-            setStats(res.data);
-        })
-        .catch((err) => console.log(err));
-    api.get("/recent-activity/?merchant_id=1")
-        .then((res) => {
-            console.log("Activities:", res.data);
-            setActivities(res.data);
-        })
-        .catch((err) => console.log(err));
-    api.get("/shipments/")
-        .then((res) => {
-            console.log("Shipments:", res.data);
-            setShipments(res.data);
-        })
-        .catch((err) => console.log(err));
+        // Fetch stats
+        api.get("/stats/?merchant_id=1")
+            .then((res) => {
+                console.log("Stats:", res.data);
+                setStats(res.data);
+            })
+            .catch((err) => console.log(err));
 
-}, []);
+        // Fetch recent activity
+        api.get("/recent-activity/?merchant_id=1")
+            .then((res) => {
+                console.log("Activities:", res.data);
+                // Handle both array and object response
+                const activityData = Array.isArray(res.data) ?
+                                    res.data :
+                                    res.data.activities || res.data.data || [];
+                setActivities(activityData);
+            })
+            .catch((err) => console.log(err));
+
+        // Fetch shipments
+        api.get("/shipments/?merchant_id=1")
+            .then((res) => {
+                console.log("Shipments:", res.data);
+                // Handle both array and object response
+                const shipmentData = Array.isArray(res.data) ?
+                                    res.data :
+                                    res.data.shipments || res.data.data || [];
+                setShipments(shipmentData);
+            })
+            .catch((err) => console.log(err));
+
+    }, []);
 
     return (
 

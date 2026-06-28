@@ -16,18 +16,22 @@ function QuickActions() {
                 key_name: "Dashboard API Key"
             });
 
-            alert(
-                "API Key Generated Successfully!\n\n" +
-                response.data.api_key.api_key
-            );
+            // FIXED: Check if success is true
+            if (response.data.success === true) {
+                alert(
+                    "API Key Generated Successfully!\n\n" +
+                    response.data.api_key.api_key
+                );
+            } else {
+                alert(response.data.message || "Failed to generate API Key");
+            }
 
         }
 
         catch (error) {
 
             console.error(error);
-
-            alert("Failed to generate API Key");
+            alert(error.response?.data?.message || "Failed to generate API Key");
 
         }
 
