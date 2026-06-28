@@ -6,6 +6,9 @@ urlpatterns = [
     # Home
     path('', views.home, name='home'),
 
+    # Registration
+    path('register/', views.register, name='register'),
+
     # Delivery CRUD
     path('add/', views.add_delivery, name='add_delivery'),
     path('update/<int:id>/', views.update_delivery, name='update_delivery'),
