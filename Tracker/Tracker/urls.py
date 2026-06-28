@@ -28,3 +28,19 @@ urlpatterns = [
     path('add-shipment/', views.add_shipment_page, name='add_shipment_page'),
     path('test/', views.api_test, name='api_test'),
 ]
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    # Home page
+    path('', views.dashboard_page, name='home'),
+
+    # Existing page
+    path('dashboard-page/', views.dashboard_page, name='dashboard_page'),
+
+    # Login
+    path('login-user/', views.login_user, name='login_user'),
+]
