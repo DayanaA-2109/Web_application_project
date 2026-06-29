@@ -1,0 +1,50 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<h2>Delivery Dashboard</h2>
+
+<a href="{% url 'add_delivery' %}" class="btn btn-success mb-3">
+Add Delivery
+</a>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>ID</th>
+<th>Tracking</th>
+<th>Name</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+{% for d in deliveries %}
+
+<tr>
+
+<td>{{d.id}}</td>
+<td>{{d.tracking_number}}</td>
+<td>{{d.customer_name}}</td>
+<td>{{d.status}}</td>
+
+<td>
+
+<a href="{% url 'update_delivery' d.id %}" class="btn btn-warning">
+Edit
+</a>
+
+<a href="{% url 'delete_delivery' d.id %}" class="btn btn-danger">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
