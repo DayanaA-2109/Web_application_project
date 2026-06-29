@@ -35,7 +35,7 @@ CREATE TABLE `api_keys` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `api_key` (`api_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `api_keys` (
 
 LOCK TABLES `api_keys` WRITE;
 /*!40000 ALTER TABLE `api_keys` DISABLE KEYS */;
-INSERT INTO `api_keys` VALUES (1,1,'Nykaa Production','sk_nykaa_7f3a8b2c1d4e5f6g','read_write',1,'2026-06-25 13:13:47','2026-06-25 07:43:47'),(2,1,'React Frontend Key','c979a364f4f32de53ffd4555912b76d3a4fc9f52c2c7b1d1e0bb49d619f98b4f','read_write',1,NULL,'2026-06-26 10:52:06');
+INSERT INTO `api_keys` VALUES (1,1,'Nykaa Production','sk_nykaa_7f3a8b2c1d4e5f6g','read_write',1,'2026-06-25 13:13:47','2026-06-25 07:43:47'),(2,1,'React Frontend Key','c979a364f4f32de53ffd4555912b76d3a4fc9f52c2c7b1d1e0bb49d619f98b4f','read_write',1,NULL,'2026-06-26 10:52:06'),(3,1,'My New API Key','8996c04fa2aff760bb55b64b3d75801dcec77997568b7658bacd89ff9bae13d4','read_write',1,NULL,'2026-06-28 10:37:03'),(4,1,'Dashboard API Key','a1b65e91bf2b4fe147990fa2b68d6f96c7b5cd7a85019e7f3860f4b22497a190','read_write',1,NULL,'2026-06-28 10:42:24'),(5,1,'Dashboard API Key','130a836e9dc076eb717122afab6cd9052a51957dd0ad2984bc73832980ea804f','read_write',1,NULL,'2026-06-28 10:49:23'),(6,1,'Dashboard API Key','9beb32059763a72541df81ee71e9f525f20ace5907b3db5f569d999314753477','read_write',1,NULL,'2026-06-28 10:55:25'),(7,1,'Dashboard API Key','8a136a617e4328c49f5bd55aa82b448b2325edf725a3aca6262264317bc80292','read_write',1,NULL,'2026-06-28 10:57:51'),(8,1,'Dashboard API Key','5d737c99543f885998b2c397c6dffb4df7054e947e7b2a9b67c48c66f93ab997','read_write',1,NULL,'2026-06-28 11:13:30'),(9,1,'Dashboard API Key','11d63e7bbf360025ec22f61f687f84be85c0584dec8141b62e8dfa68fb5503e5','read_write',1,NULL,'2026-06-28 12:29:57'),(10,1,'Dashboard API Key','d9a6481767c4ee9c98cd36f2b886236f9cbc8d39a2e7c58b4ac1ab7b9795f6f3','read_write',1,NULL,'2026-06-28 12:33:33');
 /*!40000 ALTER TABLE `api_keys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +115,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,6 +124,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',3,'add_permission'),(6,'Can change permission',3,'change_permission'),(7,'Can delete permission',3,'delete_permission'),(8,'Can view permission',3,'view_permission'),(9,'Can add group',2,'add_group'),(10,'Can change group',2,'change_group'),(11,'Can delete group',2,'delete_group'),(12,'Can view group',2,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add shipment',9,'add_shipment'),(26,'Can change shipment',9,'change_shipment'),(27,'Can delete shipment',9,'delete_shipment'),(28,'Can view shipment',9,'view_shipment'),(29,'Can add tracking',10,'add_tracking'),(30,'Can change tracking',10,'change_tracking'),(31,'Can delete tracking',10,'delete_tracking'),(32,'Can view tracking',10,'view_tracking'),(33,'Can add user',11,'add_user'),(34,'Can change user',11,'change_user'),(35,'Can delete user',11,'delete_user'),(36,'Can view user',11,'view_user'),(37,'Can add api key',7,'add_apikey'),(38,'Can change api key',7,'change_apikey'),(39,'Can delete api key',7,'delete_apikey'),(40,'Can view api key',7,'view_apikey'),(41,'Can add invoice',8,'add_invoice'),(42,'Can change invoice',8,'change_invoice'),(43,'Can delete invoice',8,'delete_invoice'),(44,'Can view invoice',8,'view_invoice'),(45,'Can add delivery',12,'add_delivery'),(46,'Can change delivery',12,'change_delivery'),(47,'Can delete delivery',12,'delete_delivery'),(48,'Can view delivery',12,'view_delivery');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +264,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,6 +273,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(2,'auth','group'),(3,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(12,'delivery','delivery'),(7,'e_commerce','apikey'),(8,'e_commerce','invoice'),(9,'e_commerce','shipment'),(10,'e_commerce','tracking'),(11,'e_commerce','user'),(6,'sessions','session');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +290,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,8 +299,33 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2026-06-24 14:19:34.631683'),(2,'auth','0001_initial','2026-06-24 14:19:35.847119'),(3,'admin','0001_initial','2026-06-24 14:19:36.127154'),(4,'admin','0002_logentry_remove_auto_add','2026-06-24 14:19:36.140154'),(5,'admin','0003_logentry_add_action_flag_choices','2026-06-24 14:19:36.158664'),(6,'contenttypes','0002_remove_content_type_name','2026-06-24 14:19:36.327765'),(7,'auth','0002_alter_permission_name_max_length','2026-06-24 14:19:36.437935'),(8,'auth','0003_alter_user_email_max_length','2026-06-24 14:19:36.463551'),(9,'auth','0004_alter_user_username_opts','2026-06-24 14:19:36.474528'),(10,'auth','0005_alter_user_last_login_null','2026-06-24 14:19:36.553263'),(11,'auth','0006_require_contenttypes_0002','2026-06-24 14:19:36.559219'),(12,'auth','0007_alter_validators_add_error_messages','2026-06-24 14:19:36.571216'),(13,'auth','0008_alter_user_username_max_length','2026-06-24 14:19:36.684864'),(14,'auth','0009_alter_user_last_name_max_length','2026-06-24 14:19:36.797750'),(15,'auth','0010_alter_group_name_max_length','2026-06-24 14:19:36.822742'),(16,'auth','0011_update_proxy_permissions','2026-06-24 14:19:36.832366'),(17,'auth','0012_alter_user_first_name_max_length','2026-06-24 14:19:36.943333');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2026-06-24 14:19:34.631683'),(2,'auth','0001_initial','2026-06-24 14:19:35.847119'),(3,'admin','0001_initial','2026-06-24 14:19:36.127154'),(4,'admin','0002_logentry_remove_auto_add','2026-06-24 14:19:36.140154'),(5,'admin','0003_logentry_add_action_flag_choices','2026-06-24 14:19:36.158664'),(6,'contenttypes','0002_remove_content_type_name','2026-06-24 14:19:36.327765'),(7,'auth','0002_alter_permission_name_max_length','2026-06-24 14:19:36.437935'),(8,'auth','0003_alter_user_email_max_length','2026-06-24 14:19:36.463551'),(9,'auth','0004_alter_user_username_opts','2026-06-24 14:19:36.474528'),(10,'auth','0005_alter_user_last_login_null','2026-06-24 14:19:36.553263'),(11,'auth','0006_require_contenttypes_0002','2026-06-24 14:19:36.559219'),(12,'auth','0007_alter_validators_add_error_messages','2026-06-24 14:19:36.571216'),(13,'auth','0008_alter_user_username_max_length','2026-06-24 14:19:36.684864'),(14,'auth','0009_alter_user_last_name_max_length','2026-06-24 14:19:36.797750'),(15,'auth','0010_alter_group_name_max_length','2026-06-24 14:19:36.822742'),(16,'auth','0011_update_proxy_permissions','2026-06-24 14:19:36.832366'),(17,'auth','0012_alter_user_first_name_max_length','2026-06-24 14:19:36.943333'),(18,'e_commerce','0001_initial','2026-06-27 14:00:50.523901'),(19,'e_commerce','0002_shipment_tracking_user_delete_parcel','2026-06-27 14:00:50.568982'),(20,'e_commerce','0003_apikey_invoice_alter_tracking_options','2026-06-27 14:00:50.577281'),(21,'sessions','0001_initial','2026-06-27 14:00:50.722893');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime(6) NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_expire_date_a5c62663` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -358,7 +385,7 @@ CREATE TABLE `shipments` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `awb_number` (`awb_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,7 +394,7 @@ CREATE TABLE `shipments` (
 
 LOCK TABLES `shipments` WRITE;
 /*!40000 ALTER TABLE `shipments` DISABLE KEYS */;
-INSERT INTO `shipments` VALUES (1,'SH-12345',1,'NY-1001','Priya Sharma','9876543210','123, MG Road, Mumbai','Mumbai','400001',0.50,499.00,'delivered',NULL,'2026-06-25','2026-06-25 15:30:00','2026-06-25 07:42:21'),(2,'SH-12346',1,'NY-1002','Amit Kumar','9876543211','456, Park Street, Delhi','Delhi','110001',1.20,0.00,'in_transit',NULL,'2026-06-27',NULL,'2026-06-25 07:42:21'),(6,'AWB0FCE67CC6A',1,'ORD1002','Arun Kumar','9876543211','12 MG Road','Bangalore','560001',1.75,750.00,'pending',NULL,'2026-07-05',NULL,'2026-06-26 10:39:10');
+INSERT INTO `shipments` VALUES (1,'SH-12345',1,'NY-1001','Priya Sharma','9876543210','123, MG Road, Mumbai','Mumbai','400001',0.50,499.00,'delivered',NULL,'2026-06-25','2026-06-25 15:30:00','2026-06-25 07:42:21'),(2,'SH-12346',1,'NY-1002','Amit Kumar','9876543211','456, Park Street, Delhi','Delhi','110001',1.20,0.00,'in_transit',NULL,'2026-06-27',NULL,'2026-06-25 07:42:21'),(6,'AWB0FCE67CC6A',1,'ORD1002','Arun Kumar','9876543211','12 MG Road','Bangalore','560001',1.75,750.00,'pending',NULL,'2026-07-05',NULL,'2026-06-26 10:39:10'),(7,'AWBF388C30A6E',1,'NY-1003','preethi','1234567890','No 24  main road\nkesavapuram , minjur-601203','Tiruvallur','601203',12.00,350.00,'pending',NULL,'2026-06-30',NULL,'2026-06-28 11:01:34');
 /*!40000 ALTER TABLE `shipments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -388,7 +415,7 @@ CREATE TABLE `tracking` (
   PRIMARY KEY (`id`),
   KEY `shipment_id` (`shipment_id`),
   CONSTRAINT `tracking_ibfk_1` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,7 +424,7 @@ CREATE TABLE `tracking` (
 
 LOCK TABLES `tracking` WRITE;
 /*!40000 ALTER TABLE `tracking` DISABLE KEYS */;
-INSERT INTO `tracking` VALUES (1,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 07:43:10'),(2,1,'Picked Up','Warehouse','Picked by agent','2026-06-25 07:43:10'),(3,1,'Delivered','Mumbai','Delivered to Priya','2026-06-25 07:43:10'),(4,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 14:33:05'),(5,1,'Picked Up','Warehouse','Package picked up by agent','2026-06-25 15:33:05'),(6,1,'In Transit','Mumbai Hub','Package sorted at hub','2026-06-25 16:33:05'),(7,1,'Out for Delivery','Mumbai','Out for delivery to customer','2026-06-25 17:33:05'),(8,1,'Delivered','Mumbai','Delivered to recipient','2026-06-25 18:33:05'),(14,6,'Shipment Created','Bangalore','Shipment booked','2026-06-26 10:39:10');
+INSERT INTO `tracking` VALUES (1,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 07:43:10'),(2,1,'Picked Up','Warehouse','Picked by agent','2026-06-25 07:43:10'),(3,1,'Delivered','Mumbai','Delivered to Priya','2026-06-25 07:43:10'),(4,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 14:33:05'),(5,1,'Picked Up','Warehouse','Package picked up by agent','2026-06-25 15:33:05'),(6,1,'In Transit','Mumbai Hub','Package sorted at hub','2026-06-25 16:33:05'),(7,1,'Out for Delivery','Mumbai','Out for delivery to customer','2026-06-25 17:33:05'),(8,1,'Delivered','Mumbai','Delivered to recipient','2026-06-25 18:33:05'),(14,6,'Shipment Created','Bangalore','Shipment booked','2026-06-26 10:39:10'),(15,7,'Shipment Created','Tiruvallur','Shipment booked','2026-06-28 11:01:34');
 /*!40000 ALTER TABLE `tracking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,4 +471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-26 21:54:15
+-- Dump completed on 2026-06-29 10:39:32

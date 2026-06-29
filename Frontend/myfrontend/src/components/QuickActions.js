@@ -2,10 +2,12 @@ import { useState } from "react";
 import api from "../services/api";
 import { FaPlus, FaSearch, FaKey } from "react-icons/fa";
 import CreateShipmentModal from "./CreateShipmentModal";
+import TrackShipmentModal from "./TrackShipmentModal";
 
 function QuickActions() {
 
     const [showModal, setShowModal] = useState(false);
+    const [showTrackModal, setShowTrackModal] = useState(false);
 
     const generateApiKey = async () => {
 
@@ -67,6 +69,7 @@ function QuickActions() {
 
                 <button
                     className="action-btn track-btn"
+                    onClick={() => setShowTrackModal(true)}
                 >
 
                     <FaSearch />
@@ -92,6 +95,10 @@ function QuickActions() {
                 show={showModal}
                 onClose={() => setShowModal(false)}
                 onSuccess={() => window.location.reload()}
+            />
+            <TrackShipmentModal
+                show={showTrackModal}
+                onClose={() => setShowTrackModal(false)}
             />
 
         </>

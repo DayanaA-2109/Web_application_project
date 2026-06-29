@@ -1,0 +1,73 @@
+.track-modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.track-modal{
+    width:500px;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.track-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid #ddd;
+}
+
+.track-header h2{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin:0;
+}
+
+.close-btn{
+    border:none;
+    background:none;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.track-body{
+    padding:25px;
+}
+
+.track-body label{
+    display:block;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.track-body input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.track-footer{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    padding:20px;
+    border-top:1px solid #ddd;
+}
+
+.cancel-btn{
+    padding:10px 20px;
+}
+
+.track-btn{
+    padding:10px 20px;
+}
