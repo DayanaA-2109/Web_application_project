@@ -27,6 +27,6 @@ urlpatterns = [
     path("delivery/", include("delivery.urls")),
 
 
-    path("user/", include("users.urls")),
+    path("user/", include("user.urls")),
 
 ]

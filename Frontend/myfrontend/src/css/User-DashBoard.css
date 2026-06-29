@@ -1,0 +1,243 @@
+/* User Dashboard Container */
+.user-dashboard-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 30px 40px;
+}
+
+/* User Welcome Banner */
+.user-welcome-banner {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    padding: 28px 35px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-welcome-banner h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.user-welcome-banner p {
+    opacity: 0.9;
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+.user-search-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 6px 6px 16px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.user-search-box input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    width: 200px;
+    background: rgba(255,255,255,0.9);
+}
+
+.user-search-box i {
+    color: rgba(255,255,255,0.8);
+}
+
+/* User Loading */
+.user-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    color: #5a6c7d;
+}
+
+.user-loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e9edf2;
+    border-top: 3px solid #2563eb;
+    border-radius: 50%;
+    animation: userSpin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes userSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* User Empty State */
+.user-empty-state {
+    text-align: center;
+    padding: 60px 40px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e9edf2;
+}
+
+.user-empty-state i {
+    font-size: 56px;
+    color: #c1c9d6;
+}
+
+.user-empty-state h3 {
+    margin-top: 16px;
+    color: #1a2332;
+}
+
+.user-empty-state p {
+    color: #5a6c7d;
+    margin-top: 6px;
+}
+
+/* User Shipment Grid */
+.user-shipment-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+/* User Shipment Card */
+.user-shipment-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    border: 1px solid #e9edf2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    transition: all 0.2s;
+}
+
+.user-shipment-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+}
+
+.user-shipment-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.user-status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.user-status-dot.user-delivered { background: #16a34a; }
+.user-status-dot.user-transit { background: #f59e0b; }
+.user-status-dot.user-pending { background: #dc2626; }
+.user-status-dot.user-created { background: #2563eb; }
+
+.user-shipment-info .user-awb {
+    font-weight: 600;
+    font-size: 15px;
+    color: #1a2332;
+}
+
+.user-shipment-info .user-details {
+    font-size: 13px;
+    color: #5a6c7d;
+    margin-top: 2px;
+}
+
+.user-shipment-info .user-date {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.user-shipment-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-status-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.user-status-badge.user-delivered { background: #f0fdf4; color: #16a34a; }
+.user-status-badge.user-transit { background: #fffbeb; color: #f59e0b; }
+.user-status-badge.user-pending { background: #fef2f2; color: #dc2626; }
+.user-status-badge.user-created { background: #eff6ff; color: #2563eb; }
+
+.user-track-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.user-track-btn:hover {
+    background: #1d4ed8;
+    transform: scale(1.02);
+}
+
+/* User Responsive */
+@media (max-width: 768px) {
+    .user-dashboard-container {
+        padding: 20px;
+    }
+    .user-welcome-banner {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .user-search-box {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .user-search-box input {
+        width: 100%;
+    }
+    .user-shipment-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .user-shipment-right {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-shipment-right {
+        flex-wrap: wrap;
+    }
+    .user-track-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

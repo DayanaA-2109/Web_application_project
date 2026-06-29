@@ -561,7 +561,7 @@ LOCK TABLES `user_user` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -580,13 +580,13 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `user`
 --
 
 LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'Tamizh','tamizh@gmail.com','123456','9876543210','2026-06-29 06:43:36');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

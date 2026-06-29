@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',  # ← Add this if using DRF
     'e_commerce',
     'delivery',
-    'users',
+    'user',
 ]
 
 MIDDLEWARE = [

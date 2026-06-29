@@ -7,8 +7,8 @@ urlpatterns = [
     path("test/", views.api_test, name="api_test"),
 
     # USERS
-    path("users/", views.get_users, name="get_users"),
-    path("users/<int:user_id>/", views.get_user, name="get_user"),
+    path("user/", views.get_users, name="get_users"),
+    path("user/<int:user_id>/", views.get_user, name="get_user"),
     path("merchants/", views.get_merchants, name="get_merchants"),
     path("merchant/<int:merchant_id>/", views.merchant_profile, name="merchant_profile"),
     path("merchant/<int:merchant_id>/update/", views.update_profile, name="update_profile"),
