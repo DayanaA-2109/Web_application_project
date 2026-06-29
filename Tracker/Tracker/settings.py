@@ -81,6 +81,8 @@ DATABASES = {
         'NAME': 'tracker',
         'USER': 'root',
         'PASSWORD': 'Rihana@0109',
+        'PASSWORD': 'Thamizh@2507',
+        647ae5b60c5123c96224d5908e57ac39b377b050
         'HOST': 'localhost',
         'PORT': 3306,
     }
