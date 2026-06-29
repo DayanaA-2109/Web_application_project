@@ -27,6 +27,6 @@ urlpatterns = [
     # LEADER APP - Friend's dashboards (admin, user, agent, merchant)
     path("", include("leader.urls")),
 
-    # DELIVERY APP - Friend's delivery dashboard
+    
     path("delivery/", include("delivery.urls")),
 ]
