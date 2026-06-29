@@ -460,6 +460,44 @@ INSERT INTO `shipments` VALUES (1,'SH-12345',1,'NY-1001','Priya Sharma','9876543
 UNLOCK TABLES;
 
 --
+-- Table structure for table `shipments_user`
+--
+
+DROP TABLE IF EXISTS `shipments_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shipments_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `awb_number` varchar(20) NOT NULL,
+  `merchant_id` int NOT NULL,
+  `receiver_name` varchar(100) NOT NULL,
+  `receiver_phone` varchar(20) NOT NULL,
+  `receiver_address` text NOT NULL,
+  `receiver_city` varchar(50) NOT NULL,
+  `receiver_pincode` varchar(10) NOT NULL,
+  `weight` decimal(8,2) NOT NULL,
+  `cod_amount` decimal(10,2) DEFAULT '0.00',
+  `status` enum('pending','picked_up','in_transit','out_for_delivery','delivered','failed') DEFAULT 'pending',
+  `expected_delivery` date DEFAULT NULL,
+  `delivered_at` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `awb_number` (`awb_number`),
+  KEY `merchant_id` (`merchant_id`),
+  CONSTRAINT `shipments_user_ibfk_1` FOREIGN KEY (`merchant_id`) REFERENCES `users_ecommerce` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shipments_user`
+--
+
+LOCK TABLES `shipments_user` WRITE;
+/*!40000 ALTER TABLE `shipments_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shipments_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tracking`
 --
 
@@ -487,6 +525,39 @@ LOCK TABLES `tracking` WRITE;
 /*!40000 ALTER TABLE `tracking` DISABLE KEYS */;
 INSERT INTO `tracking` VALUES (1,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 07:43:10'),(2,1,'Picked Up','Warehouse','Picked by agent','2026-06-25 07:43:10'),(3,1,'Delivered','Mumbai','Delivered to Priya','2026-06-25 07:43:10'),(4,1,'Order Placed','Warehouse','Order confirmed','2026-06-25 14:33:05'),(5,1,'Picked Up','Warehouse','Package picked up by agent','2026-06-25 15:33:05'),(6,1,'In Transit','Mumbai Hub','Package sorted at hub','2026-06-25 16:33:05'),(7,1,'Out for Delivery','Mumbai','Out for delivery to customer','2026-06-25 17:33:05'),(8,1,'Delivered','Mumbai','Delivered to recipient','2026-06-25 18:33:05'),(14,6,'Shipment Created','Bangalore','Shipment booked','2026-06-26 10:39:10'),(15,7,'Shipment Created','Tiruvallur','Shipment booked','2026-06-28 11:01:34');
 /*!40000 ALTER TABLE `tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_user`
+--
+
+DROP TABLE IF EXISTS `user_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `role` enum('customer','merchant','admin','agent') DEFAULT 'customer',
+  `address` text,
+  `city` varchar(50) DEFAULT NULL,
+  `pincode` varchar(10) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_user`
+--
+
+LOCK TABLES `user_user` WRITE;
+/*!40000 ALTER TABLE `user_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -561,4 +632,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-29 12:39:26
+-- Dump completed on 2026-06-29 13:58:11
