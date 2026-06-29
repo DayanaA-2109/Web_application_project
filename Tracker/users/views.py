@@ -1,5 +1,26 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import User
+from django.http import JsonResponse
+
+
+def get_users(request):
+    users = User.objects.all()
+
+    data = []
+    for user in users:
+        data.append({
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+            "phone": user.phone,
+            "role": user.role,
+            "address": user.address,
+            "city": user.city,
+            "pincode": user.pincode,
+            "is_active": user.is_active,
+        })
+
+    return JsonResponse(data, safe=False)
 
 # Display all users
 def user_list(request):

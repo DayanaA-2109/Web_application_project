@@ -14,5 +14,4 @@ class User(models.Model):
     created_at = models.DateTimeField()
 
     class Meta:
-        managed = False
-        db_table = 'user'
+        db_table = 'user_user'
