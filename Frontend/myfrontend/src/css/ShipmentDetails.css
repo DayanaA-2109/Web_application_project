@@ -1,0 +1,50 @@
+.details-card{
+
+    margin-top:25px;
+    background:white;
+    border-radius:12px;
+    border:1px solid #ddd;
+    padding:25px;
+
+}
+
+.details-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+
+}
+
+.details-header h2{
+
+    margin:0;
+    color:#1f2937;
+
+}
+
+.details-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+.details-grid label{
+
+    display:block;
+    color:#6b7280;
+    font-size:13px;
+    margin-bottom:5px;
+
+}
+
+.details-grid p{
+
+    margin:0;
+    font-weight:600;
+    color:#111827;
+
+}

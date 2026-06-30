@@ -9,10 +9,11 @@
 }
 
 .track-modal{
-    width:500px;
+    width:800px;
+    max-height:90vh;
+    overflow-y:auto;
     background:#fff;
     border-radius:12px;
-    overflow:hidden;
     box-shadow:0 8px 25px rgba(0,0,0,.2);
 }
 
@@ -70,4 +71,82 @@
 
 .track-btn{
     padding:10px 20px;
+}
+
+/* -------- New Styles -------- */
+
+.loading-text{
+    color:#2563eb;
+    margin-top:15px;
+    font-weight:600;
+}
+
+.error-text{
+    color:#dc2626;
+    margin-top:15px;
+    font-weight:600;
+}
+
+.shipment-card{
+    margin-top:25px;
+    padding:20px;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    background:#fafafa;
+}
+
+.shipment-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.shipment-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.shipment-grid strong{
+    color:#374151;
+    display:block;
+    margin-bottom:4px;
+}
+
+.shipment-grid p{
+    margin:0;
+    color:#555;
+}
+
+.status-badge{
+    padding:7px 15px;
+    border-radius:20px;
+    color:white;
+    font-size:14px;
+    text-transform:capitalize;
+}
+
+.status-badge.pending{
+    background:#f59e0b;
+}
+
+.status-badge.picked_up{
+    background:#2563eb;
+}
+
+.status-badge.in_transit{
+    background:#0ea5e9;
+}
+
+.status-badge.out_for_delivery{
+    background:#8b5cf6;
+}
+
+.status-badge.delivered{
+    background:#22c55e;
+}
+
+.status-badge.failed{
+    background:#ef4444;
 }

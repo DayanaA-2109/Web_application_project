@@ -108,6 +108,10 @@ class TrackingSerializer:
 
             "location": track.location,
 
+            "latitude": float(track.latitude) if track.latitude else None,
+
+            "longitude": float(track.longitude) if track.longitude else None,
+
             "remarks": track.remarks,
 
             "created_at": track.created_at
@@ -158,11 +162,8 @@ class ApiKeySerializer:
     def serialize_many(keys):
 
         return [
-
             ApiKeySerializer.serialize(key)
-
             for key in keys
-
         ]
 
 
@@ -201,9 +202,6 @@ class InvoiceSerializer:
     def serialize_many(invoices):
 
         return [
-
             InvoiceSerializer.serialize(invoice)
-
             for invoice in invoices
-
         ]

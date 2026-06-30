@@ -103,6 +103,10 @@ class Shipment(models.Model):
 # TRACKING
 # ==========================
 
+# ==========================
+# TRACKING
+# ==========================
+
 class Tracking(models.Model):
 
     id = models.AutoField(primary_key=True)
@@ -117,7 +121,25 @@ class Tracking(models.Model):
 
     location = models.CharField(max_length=100)
 
-    remarks = models.TextField(blank=True, null=True)
+    # GPS Coordinates
+    latitude = models.DecimalField(
+        max_digits=10,
+        decimal_places=7,
+        blank=True,
+        null=True
+    )
+
+    longitude = models.DecimalField(
+        max_digits=10,
+        decimal_places=7,
+        blank=True,
+        null=True
+    )
+
+    remarks = models.TextField(
+        blank=True,
+        null=True
+    )
 
     created_at = models.DateTimeField()
 
@@ -127,8 +149,6 @@ class Tracking(models.Model):
 
     def __str__(self):
         return self.status
-
-
 # ==========================
 # API KEYS
 # ==========================

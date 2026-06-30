@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'rest_framework',  # ← Add this if using DRF
+    'rest_framework',
     'e_commerce',
     'delivery',
     'user',
@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tracker',
         'USER': 'root',
-        'PASSWORD': 'Rihana@0109',
+        'PASSWORD': 'Password.1',
         'HOST': 'localhost',
         'PORT': 3306,
     }
@@ -127,8 +127,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ==================== CORS SETTINGS ====================
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3002",
-    "http://127.0.0.1:3002",
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
 ]
 
 # Allow all methods (GET, POST, PUT, DELETE, etc.)

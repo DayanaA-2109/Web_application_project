@@ -523,27 +523,24 @@ def delete_shipment(request, awb):
 def track_shipment(request, awb):
 
     shipment = get_object_or_404(
-
         Shipment,
-
         awb_number=awb
-
     )
 
     tracking = Tracking.objects.filter(
-
         shipment=shipment
+    ).order_by("created_at")   # oldest -> newest
 
-    ).order_by("-created_at")
+    shipment_data = ShipmentSerializer.serialize(shipment)
+    shipment_data["tracking"] = TrackingSerializer.serialize_many(tracking)
 
     return JsonResponse({
 
-        "shipment":ShipmentSerializer.serialize(shipment),
+        "success": True,
 
-        "tracking":TrackingSerializer.serialize_many(tracking)
+        "shipment": shipment_data
 
     })
-
 @require_http_methods(["GET"])
 def get_stats(request):
 
