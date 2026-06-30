@@ -671,3 +671,13 @@
     background:#cfcfcf;
 
 }
+.dashboard-layout{
+    display:flex;
+}
+
+.dashboard-main{
+    margin-left:190px;
+    width:calc(100% - 190px);
+    padding:25px;
+    box-sizing:border-box;
+}
